@@ -1,201 +1,328 @@
-import React from 'react';
-import { Download, Github, Linkedin, ExternalLink, Code2, Mail } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapala Sai Kumar - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-const Portfolio = () => {
-  const portfolioData = {
-    name: "Chapala Sai Kumar",
-    title: "Backend Software Engineer",
-    email: "ik9zqoea1@mozmail.com",
-    about: "Dedicated Backend Software Engineer with proven expertise in building microservices using Spring Boot framework. Proven ability to design scalable solutions, and enhance system performance using available resources to the fullest.",
-    skills: {
-      languages: ["Java", "C++", "Python", "NodeJs", "Javascript", "Golang"],
-      frameworks: ["SpringBoot", "ExpressJs", "Django"],
-      databases: ["MySql", "Redis", "MongoDB"],
-      additional: ["Microservice Architecture", "Secure API Design", "Code Review", "Production Debugging", "Schema Design"]
-    },
-    experience: [
-      {
-        role: "Software Engineer - I",
-        company: "Nykaa",
-        period: "06/2022 – 09/2024",
-        location: "Bangalore",
-        achievements: [
-          "Architected and implemented 2 critical micro-services using Spring Boot, Java, MySQL, AWS SQS, and SNS",
-          "Developed Python scripts to automate data ingestion in all deployment levels",
-          "Developed a user help desk microservice with Tree data-structure for breadcrumbs",
-          "Led the design and integration of the Interactive Voice Response (IVR) system",
-          "Enhanced data privacy by integrating virtual numbers",
-          "Built Kibana visual dashboards for critical microservice debugging",
-          "Mentored junior developers and conducted knowledge transfer sessions"
-        ]
-      },
-      {
-        role: "Software Engineer Intern",
-        company: "Emotify",
-        period: "09/2021 – 12/2021",
-        achievements: [
-          "Developed 4 microservices for news data processing pipeline",
-          "Integrated machine learning models for text summarization",
-          "Developed an image search system based on text summaries"
-        ]
-      }
-    ],
-    education: {
-      degree: "Bachelors of Technology (CSE)",
-      institution: "National Institute of Technology, Andhra Pradesh",
-      period: "2018 – 2022"
-    },
-    projects: [
-      {
-        title: "Chat with Everyone",
-        description: "P2P web chat application built with Golang and PostgreSQL, featuring real-time messaging and online user tracking",
-        tech: ["Golang", "PostgreSQL", "HTML", "CSS", "JavaScript"]
-      },
-      {
-        title: "Effective Feedback System",
-        description: "Feedback management system built with Django, featuring user query tracking and interactive web pages",
-        tech: ["Django", "HTML", "CSS", "JavaScript"]
-      }
-    ]
-  };
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #f6f9fc 0%, #eef1f5 100%);
+            color: #2d3748;
+            min-height: 100vh;
+        }
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100">
-      {/* Header Section */}
-      <header className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-8">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold mb-2">{portfolioData.name}</h1>
-          <p className="text-xl text-indigo-100 mb-2">{portfolioData.title}</p>
-          <div className="flex flex-wrap gap-4 text-sm mb-4">
-            <span className="flex items-center gap-2">
-              <Mail size={16} /> {portfolioData.email}
-            </span>
-            <span>{portfolioData.phone}</span>
-          </div>
-          <div className="flex gap-4">
-            <button className="flex items-center gap-2 bg-white text-indigo-600 px-4 py-2 rounded-lg hover:bg-indigo-50 transition-colors">
-              <Download size={20} /> Download Resume
-            </button>
-            <div className="flex gap-4 ml-4">
-              <Github className="hover:text-indigo-200 cursor-pointer" />
-              <Linkedin className="hover:text-indigo-200 cursor-pointer" />
-              <Code2 className="hover:text-indigo-200 cursor-pointer" title="Leetcode" />
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-bottom: 24px;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4a90e2 0%, #6366f1 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .title {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 16px;
+        }
+
+        .contact {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .contact a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #4a90e2;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 16px;
+        }
+
+        .skill-category h4 {
+            color: #4a90e2;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            padding: 6px 12px;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e6e9ff 100%);
+            border-radius: 12px;
+            margin: 4px;
+            font-size: 0.9rem;
+            color: #4a5568;
+        }
+
+        .experience-item {
+            margin-bottom: 24px;
+            padding-left: 20px;
+            border-left: 3px solid #4a90e2;
+        }
+
+        .job-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 4px;
+        }
+
+        .company-name {
+            color: #4a90e2;
+            font-weight: 500;
+        }
+
+        .date {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        li::before {
+            content: "•";
+            color: #4a90e2;
+            position: absolute;
+            left: 0;
+        }
+
+        .project-item {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+
+            .name {
+                font-size: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .container {
+                margin: 0;
+                padding: 20px;
+            }
+
+            .card {
+                box-shadow: none;
+                padding: 20px 0;
+            }
+
+            .card:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="name">Chapala Sai Kumar</h1>
+            <div class="title">Backend Software Engineer</div>
+            <div class="contact">
+                <a href="mailto:ik9zqoea1@mozmail.com">ik9zqoea1@mozmail.com</a>
+                <a href="https://www.linkedin.com/in/sai-k-3369991b3/">LinkedIn</a>
+                <a href="https://github.com/Sai-kumar1">GitHub</a>
+                <a href="https://leetcode.com/u/sai_ee/">Leetcode</a>
             </div>
-          </div>
+        </header>
+
+        <div class="card">
+            <h2 class="section-title">Summary</h2>
+            <p>Dedicated Backend Software Engineer with proven expertise in building microservices using Spring Boot framework. Proven ability to design scalable solutions, and enhance system performance using available resources to the fullest.</p>
         </div>
-      </header>
 
-      {/* Main Content */}
-      <main className="max-w-4xl mx-auto p-8">
-        {/* About Section */}
-        <section className="mb-12 bg-white rounded-lg p-6 shadow-lg">
-          <h2 className="text-2xl font-bold mb-4 text-indigo-600">About Me</h2>
-          <p className="text-gray-700">{portfolioData.about}</p>
-        </section>
-
-        {/* Skills Section */}
-        <section className="mb-12 bg-white rounded-lg p-6 shadow-lg">
-          <h2 className="text-2xl font-bold mb-4 text-indigo-600">Skills</h2>
-          <div className="space-y-4">
-            <div>
-              <h3 className="font-semibold text-indigo-500 mb-2">Programming Languages</h3>
-              <div className="flex flex-wrap gap-2">
-                {portfolioData.skills.languages.map((skill) => (
-                  <span key={skill} className="px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-full text-indigo-600">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h3 className="font-semibold text-indigo-500 mb-2">Frameworks</h3>
-              <div className="flex flex-wrap gap-2">
-                {portfolioData.skills.frameworks.map((skill) => (
-                  <span key={skill} className="px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-full text-indigo-600">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h3 className="font-semibold text-indigo-500 mb-2">Databases</h3>
-              <div className="flex flex-wrap gap-2">
-                {portfolioData.skills.databases.map((skill) => (
-                  <span key={skill} className="px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-full text-indigo-600">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h3 className="font-semibold text-indigo-500 mb-2">Additional Competencies</h3>
-              <div className="flex flex-wrap gap-2">
-                {portfolioData.skills.additional.map((skill) => (
-                  <span key={skill} className="px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-full text-indigo-600">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Experience Section */}
-        <section className="mb-12 bg-white rounded-lg p-6 shadow-lg">
-          <h2 className="text-2xl font-bold mb-4 text-indigo-600">Experience</h2>
-          <div className="space-y-8">
-            {portfolioData.experience.map((exp) => (
-              <div key={exp.company} className="border-l-4 border-indigo-200 pl-4">
-                <h3 className="text-xl font-semibold text-indigo-600">{exp.role}</h3>
-                <div className="text-indigo-500">{exp.company}</div>
-                <div className="text-gray-500 mb-2">{exp.period} {exp.location && `| ${exp.location}`}</div>
-                <ul className="list-disc list-inside space-y-2 text-gray-600">
-                  {exp.achievements.map((achievement, index) => (
-                    <li key={index} className="ml-4">{achievement}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Projects Section */}
-        <section className="mb-12 bg-white rounded-lg p-6 shadow-lg">
-          <h2 className="text-2xl font-bold mb-4 text-indigo-600">Projects</h2>
-          <div className="grid gap-6 md:grid-cols-2">
-            {portfolioData.projects.map((project) => (
-              <div key={project.title} className="p-4 border border-indigo-100 rounded-lg hover:shadow-md transition-shadow">
-                <h3 className="text-xl font-semibold text-indigo-600 mb-2">{project.title}</h3>
-                <p className="text-gray-600 mb-3">{project.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech) => (
-                    <span key={tech} className="px-2 py-1 bg-indigo-50 text-indigo-600 text-sm rounded">
-                      {tech}
-                    </span>
-                  ))}
+        <div class="card">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Programming Languages</h4>
+                    <div>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">NodeJs</span>
+                        <span class="skill-tag">Javascript</span>
+                        <span class="skill-tag">Golang</span>
+                    </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </section>
+                <div class="skill-category">
+                    <h4>Frameworks</h4>
+                    <div>
+                        <span class="skill-tag">SpringBoot</span>
+                        <span class="skill-tag">ExpressJs</span>
+                        <span class="skill-tag">Django</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Databases</h4>
+                    <div>
+                        <span class="skill-tag">MySql</span>
+                        <span class="skill-tag">Redis</span>
+                        <span class="skill-tag">MongoDB</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Additional Competencies</h4>
+                    <div>
+                        <span class="skill-tag">Microservice Architecture</span>
+                        <span class="skill-tag">Secure API Design</span>
+                        <span class="skill-tag">Code Review</span>
+                        <span class="skill-tag">Production Debugging</span>
+                        <span class="skill-tag">Schema Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        {/* Education Section */}
-        <section className="mb-12 bg-white rounded-lg p-6 shadow-lg">
-          <h2 className="text-2xl font-bold mb-4 text-indigo-600">Education</h2>
-          <div className="border-l-4 border-indigo-200 pl-4">
-            <h3 className="text-xl font-semibold text-indigo-600">{portfolioData.education.degree}</h3>
-            <p className="text-indigo-500">{portfolioData.education.institution}</p>
-            <p className="text-gray-500">{portfolioData.education.period}</p>
-          </div>
-        </section>
-      </main>
+        <div class="card">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-item">
+                <div class="job-title">Software Engineer - I</div>
+                <div class="company-name">Nykaa</div>
+                <div class="date">06/2022 – 09/2024 | Bangalore</div>
+                <ul>
+                    <li>Architected and implemented 2 critical micro-services using Spring Boot, Java, MySQL, AWS SQS, and SNS.</li>
+                    <li>Took initiative to develop Python scripts to automate data ingestion in all deployment levels.</li>
+                    <li>Developed a user help desk microservice with Tree data-structure for breadcrumbs.</li>
+                    <li>Led the design and integration of the Interactive Voice Response (IVR) system.</li>
+                    <li>Enhanced data privacy by integrating virtual numbers.</li>
+                    <li>Built Kibana visual dashboards for critical microservice debugging.</li>
+                    <li>Mentored junior developers and conducted knowledge transfer sessions.</li>
+                </ul>
+            </div>
 
-      {/* Footer */}
-      <footer className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-4 text-center">
-        <p>© 2024 {portfolioData.name}. All rights reserved.</p>
-      </footer>
+            <div class="experience-item">
+                <div class="job-title">Software Engineer Intern</div>
+                <div class="company-name">Emotify</div>
+                <div class="date">09/2021 – 12/2021</div>
+                <ul>
+                    <li>Developed 4 microservices for news data processing pipeline.</li>
+                    <li>Integrated machine learning models for text summarization.</li>
+                    <li>Developed an image search system based on text summaries.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">Education</h2>
+            <div class="experience-item">
+                <div class="job-title">Bachelors of Technology (CSE)</div>
+                <div class="company-name">National Institute of Technology, Andhra Pradesh</div>
+                <div class="date">2018 – 2022</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">Projects</h2>
+            <div class="project-item">
+                <div class="job-title">Chat with Everyone</div>
+                <p class="date">P2P web chat</p>
+                <ul>
+                    <li>Project focus is about building a pseudo real time application.</li>
+                    <li>Implemented user tracking and real-time messaging features.</li>
+                    <li>Tech stack: HTML, CSS, Javascript (frontend) | Golang, Postgresql (backend)</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <div class="job-title">Effective Feedback System</div>
+                <ul>
+                    <li>Developed backend logic and user query tracking system.</li>
+                    <li>Created interactive web pages and implemented user flow.</li>
+                    <li>Technologies used: HTML, CSS, JavaScript, Django</li>
+                </ul>
+            </div>
+        </div>
     </div>
-  );
-};
-
-export default Portfolio;
+</body>
+</html>
