@@ -2,7 +2,7 @@
 layout: default
 title: Projects
 ---
-
+<h3 class="fw-bold"> Projects </h3>
 <ul class="project-list">
   {% if site.projects and site.projects != empty %}
     {% for project in site.projects %}
