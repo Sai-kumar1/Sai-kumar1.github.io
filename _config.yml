@@ -1,1 +1,17 @@
-theme: jekyll-theme-cayman
+title: Sai Kumar
+description: Portfolio
+baseurl: ""
+url: "https://sai-kumar1.github.io"
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  math_engine: mathjax
+
+collections:
+  projects:
+    output: false
+    permalink: "/project/:link/"
+  blogs:
+    output: true
+    permalink: "/blog/:link/"
