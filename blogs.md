@@ -3,8 +3,6 @@ layout: default
 title: Blogs
 ---
 
-<h1>Blogs</h1>
-
 <ul class="blog-list">
     {% if site.blogs and site.blogs != empty %}
         {% for blog in site.blogs %}

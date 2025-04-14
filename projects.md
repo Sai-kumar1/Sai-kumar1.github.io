@@ -3,8 +3,6 @@ layout: default
 title: Projects
 ---
 
-<h1>My Projects</h1>
-
 <ul class="project-list">
   {% if site.projects and site.projects != empty %}
     {% for project in site.projects %}
