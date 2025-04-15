@@ -20,8 +20,17 @@
     rel="stylesheet">
 
   <style>
+    html {
+      background-size: cover;
+      height: 100%;
+      overflow: hidden; /* prevent body from scrolling */
+    }
     body {
+      background-image: url('{{ site.baseurl }}/assets/images/wavy-bg.png');;
       font-family: Assistant !important;
+      height: 100%;
+      margin: 0;
+      overflow-y: auto;
     }
 
     .is-family-secondary {

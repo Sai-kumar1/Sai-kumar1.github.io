@@ -31,7 +31,7 @@ In the latest versions of Go ,independent of the project location, if there is a
 
 >How to install a specific package ?
 
-<span class="d-inline-block" style="width:10px; height:10px;margin-right:0.5rem;background-color: #ff345d !important;"></span>package location is the link where the package is hosted
+<span class="d-inline-block" style="width:0.5em; height:0.5em;margin-right:0.5rem;background-color: #ff345d !important;border-radius:1px;"></span>package location is the link where the package is hosted
 
 For a specific version
 ```go
