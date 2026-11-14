@@ -30,8 +30,9 @@
   gap: 1rem;
 }
 
-// Brand + nav and the page title share this slot; one slides out as the
-// other slides in (toggled by .is-titled on .site-header, see main.js).
+// The name and the page title share this slot; one slides out as the other
+// slides in (toggled by .is-titled on .site-header, see main.js). The nav
+// and theme toggle stay put so other sections are always one tap away.
 .site-header__swap {
   position: relative;
   flex: 1;
@@ -39,17 +40,21 @@
   height: 100%;
   overflow: hidden;
 }
-.site-header__main,
+.site-header__brand,
+.site-header__title {
+  position: absolute;
+  inset: 0 auto 0 0;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  transition: transform 300ms cubic-bezier(0.2, 0, 0, 1), opacity 200ms ease;
+}
 .site-header__title {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
   transition: transform 300ms cubic-bezier(0.2, 0, 0, 1), opacity 200ms ease;
-}
-.site-header__main {
-  justify-content: space-between;
-  gap: 1rem;
 }
 .site-header__title {
   min-width: 0;
@@ -68,15 +73,35 @@
   span { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
   &:hover { color: var(--accent); }
 }
+// Phones: tighten the row so the name/title slot gets more room, and let
+// the title use two smaller lines (fits inside the header height).
+@media (max-width: 480px) {
+  .site-header__inner { gap: 0.5rem; }
+  .site-nav__link { padding: 0.4rem 0.5rem; }
+  .site-header .theme-toggle { margin-left: 0; }
+  .site-header__title {
+    font-size: 0.8125rem;
+    line-height: 1.25;
+    span {
+      white-space: normal;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+    }
+  }
+}
+
 .site-header.is-titled {
-  .site-header__main  { opacity: 0; transform: translateY(-100%); }
+  .site-header__brand { opacity: 0; transform: translateY(-100%); }
   .site-header__title { opacity: 1; transform: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .site-header__main, .site-header__title { transition: opacity 150ms ease; transform: none !important; }
+  .site-header__brand, .site-header__title { transition: opacity 150ms ease; transform: none !important; }
 }
 
 .site-header__brand {
+  white-space: nowrap;
   font-family: var(--font-brand);
   font-style: italic;
   font-weight: 700;
@@ -87,6 +112,7 @@
 }
 
 .site-nav {
+  flex: none;
   display: flex;
   align-items: center;
   gap: 0.25rem;

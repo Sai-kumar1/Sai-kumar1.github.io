@@ -162,14 +162,14 @@
   /* ---------- Page title in the header once it scrolls away ---------- */
   var header = document.querySelector("[data-site-header]");
   var headerTitle = document.querySelector("[data-header-title]");
-  var headerMain = document.querySelector("[data-header-main]");
+  var headerBrand = document.querySelector("[data-header-brand]");
   var pageTitle = document.querySelector(".post-title");
-  if (header && headerTitle && headerMain && pageTitle && "IntersectionObserver" in window) {
+  if (header && headerTitle && headerBrand && pageTitle && "IntersectionObserver" in window) {
     var setTitled = function (on) {
       header.classList.toggle("is-titled", on);
       // Only the visible half is focusable / announced.
       headerTitle.inert = !on;
-      headerMain.inert = on;
+      headerBrand.inert = on;
     };
     new IntersectionObserver(function (entries) {
       var e = entries[0];
