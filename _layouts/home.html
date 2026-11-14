@@ -1,0 +1,42 @@
+---
+layout: default
+---
+<div class="wrap">
+  <section class="hero">
+    <p class="hero__eyebrow">{{ page.greeting | default: "Hello" }}</p>
+    <h1 class="hero__title">{{ page.headline | default: site.title }}</h1>
+    <div class="hero__body prose">{{ content }}</div>
+    {% if page.exploring %}
+      <p class="hero__now"><span class="dot" aria-hidden="true"></span> Currently exploring: <strong>{{ page.exploring }}</strong></p>
+    {% endif %}
+  </section>
+
+  {%- assign posts = site.blogs | sort: "date" | reverse -%}
+  <section class="home-section" aria-labelledby="latest-writing">
+    <div class="section-head">
+      <h2 id="latest-writing" class="section-title">Latest writing</h2>
+      <a class="section-more" href="{{ '/blog/' | relative_url }}">All posts →</a>
+    </div>
+    {% if posts.size > 0 %}
+      <div class="card-list">
+        {% for post in posts limit: 3 %}{% include post-card.html post=post %}{% endfor %}
+      </div>
+    {% else %}
+      <p class="empty">Nothing published yet — check back soon.</p>
+    {% endif %}
+  </section>
+
+  {%- assign featured = site.projects | where: "featured", true -%}
+  {%- if featured.size == 0 -%}{%- assign featured = site.projects -%}{%- endif -%}
+  {% if featured.size > 0 %}
+    <section class="home-section" aria-labelledby="projects-heading">
+      <div class="section-head">
+        <h2 id="projects-heading" class="section-title">Projects</h2>
+        <a class="section-more" href="{{ '/projects/' | relative_url }}">All projects →</a>
+      </div>
+      <div class="card-grid">
+        {% for project in featured limit: 4 %}{% include project-card.html project=project %}{% endfor %}
+      </div>
+    </section>
+  {% endif %}
+</div>

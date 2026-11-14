@@ -1,0 +1,20 @@
+{%- assign project = include.project -%}
+<article class="project-card">
+  <div class="project-card__head">
+    <h3 class="project-card__title"><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
+    {% if project.status %}<span class="status status--{{ project.status | slugify }}">{{ project.status }}</span>{% endif %}
+  </div>
+  {%- assign summary = project.summary | default: project.excerpt | strip_html | strip | truncate: 160 -%}
+  {% if summary != "" %}<p class="project-card__summary">{{ summary }}</p>{% endif %}
+  {% if project.stack and project.stack.size > 0 %}
+    <ul class="tags" aria-label="Tech stack">
+      {% for item in project.stack %}<li class="tag">{{ item }}</li>{% endfor %}
+    </ul>
+  {% endif %}
+  {% if project.repo or project.demo %}
+    <p class="project-card__links">
+      {% if project.repo %}<a href="{{ project.repo }}" rel="noopener">Code ↗</a>{% endif %}
+      {% if project.demo %}<a href="{{ project.demo }}" rel="noopener">Live ↗</a>{% endif %}
+    </p>
+  {% endif %}
+</article>

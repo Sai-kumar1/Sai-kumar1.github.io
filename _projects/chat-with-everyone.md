@@ -1,8 +1,9 @@
 ---
-layout: project
 title: Chat With Everyone
 date: 2025-04-13
-link: chat-with-everyone
+summary: A real-time chat app — work in progress.
+status: in progress
+featured: true
 published: false
 ---
 

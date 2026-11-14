@@ -1,0 +1,132 @@
+.wrap {
+  width: 100%;
+  max-width: calc(var(--measure) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.wrap--wide { max-width: calc(var(--wide) + var(--gutter) * 2); }
+
+.site-main {
+  flex: 1;
+  padding-block: 3rem 5rem;
+}
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: saturate(160%) blur(10px);
+  -webkit-backdrop-filter: saturate(160%) blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.site-header__inner {
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.site-header__brand {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.site-nav__link {
+  padding: 0.4rem 0.7rem;
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  &:hover { color: var(--text); background: var(--surface-2); }
+  &[aria-current="page"] { color: var(--text); }
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: var(--step--1);
+}
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-block: 1.75rem;
+}
+.site-footer__links {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  a { color: var(--text-muted); text-decoration: none; }
+  a:hover { color: var(--accent); }
+}
+
+/* Page header (lists, 404) */
+.page-header { margin-bottom: 2.5rem; }
+.page-title { font-size: var(--step-3); }
+.page-intro { margin-top: 0.6rem; color: var(--text-muted); font-size: 1.1rem; }
+
+/* Post layout: reading column + TOC rail on wide screens */
+.post-header { margin-bottom: 2.5rem; }
+.post-title { font-size: var(--step-4); margin-top: 0.5rem; }
+.post-lede {
+  margin-top: 1rem;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--text-muted);
+}
+
+.post-layout .toc {
+  max-width: calc(var(--measure) + var(--gutter) * 2);
+  margin: 0 auto 2rem;
+  padding-inline: var(--gutter);
+}
+
+@media (min-width: $breakpoint-lg) {
+  .post-layout {
+    display: grid;
+    grid-template-columns: 1fr minmax(0, calc(var(--measure) + var(--gutter) * 2)) 1fr;
+  }
+  .post-layout .prose { grid-column: 2; grid-row: 1; margin: 0; }
+  .post-layout .toc {
+    grid-column: 3;
+    grid-row: 1;
+    margin: 0;
+    max-width: 250px;
+    padding-inline: 1.5rem 0;
+  }
+  .post-layout .toc details {
+    position: sticky;
+    top: calc(var(--header-h) + 2rem);
+  }
+}
+
+.post-footer { margin-top: 3.5rem; }
+
+/* Project layout: content + meta sidebar */
+.project-layout {
+  display: grid;
+  gap: 2.5rem;
+  .prose { max-width: var(--measure); }
+}
+@media (min-width: $breakpoint-md) {
+  .project-layout { grid-template-columns: minmax(0, 1fr) 260px; }
+  .project-meta { order: 2; }
+}

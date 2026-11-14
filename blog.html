@@ -1,0 +1,27 @@
+---
+layout: page
+title: Blog
+intro: Notes on things I've learned — mostly backend, Go and systems.
+permalink: /blog/
+redirect_from: /blogs/
+---
+{%- assign posts = site.blogs | sort: "date" | reverse -%}
+{%- assign all_tags = "" | split: "" -%}
+{%- for post in posts -%}{%- if post.tags -%}{%- assign all_tags = all_tags | concat: post.tags -%}{%- endif -%}{%- endfor -%}
+{%- assign all_tags = all_tags | uniq | sort -%}
+
+{% if all_tags.size > 0 %}
+<div class="tag-filter" data-tag-filter role="group" aria-label="Filter posts by tag">
+  <button type="button" class="chip" data-tag="" aria-pressed="true">All</button>
+  {% for tag in all_tags %}<button type="button" class="chip" data-tag="{{ tag | slugify }}" aria-pressed="false">{{ tag }}</button>{% endfor %}
+</div>
+{% endif %}
+
+{% if posts.size > 0 %}
+<div class="card-list" data-post-list>
+  {% for post in posts %}{% include post-card.html post=post %}{% endfor %}
+</div>
+<p class="empty" data-filter-empty hidden>No posts with that tag yet.</p>
+{% else %}
+<p class="empty">Nothing published yet — check back soon.</p>
+{% endif %}

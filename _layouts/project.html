@@ -1,8 +1,40 @@
 ---
 layout: default
 ---
-<article>
-  <h2 class="fw-bold">{{ page.title }}</h2>
-  <hr>
-  {{ content }}
+<article class="project wrap wrap--wide">
+  <header class="post-header">
+    <p class="meta"><a href="{{ '/projects/' | relative_url }}">Projects</a></p>
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.summary %}<p class="post-lede">{{ page.summary }}</p>{% endif %}
+  </header>
+
+  <div class="project-layout">
+    <div class="prose">
+      {{ content }}
+    </div>
+
+    <aside class="project-meta" aria-label="Project details">
+      <dl>
+        {% if page.status %}
+          <dt>Status</dt>
+          <dd><span class="status status--{{ page.status | slugify }}">{{ page.status }}</span></dd>
+        {% endif %}
+        {% if page.date %}
+          <dt>Started</dt>
+          <dd><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %Y" }}</time></dd>
+        {% endif %}
+        {% if page.stack and page.stack.size > 0 %}
+          <dt>Stack</dt>
+          <dd><ul class="tags">{% for item in page.stack %}<li class="tag">{{ item }}</li>{% endfor %}</ul></dd>
+        {% endif %}
+        {% if page.repo or page.demo %}
+          <dt>Links</dt>
+          <dd class="project-meta__links">
+            {% if page.repo %}<a class="button" href="{{ page.repo }}" rel="noopener">View code ↗</a>{% endif %}
+            {% if page.demo %}<a class="button button--ghost" href="{{ page.demo }}" rel="noopener">Live demo ↗</a>{% endif %}
+          </dd>
+        {% endif %}
+      </dl>
+    </aside>
+  </div>
 </article>

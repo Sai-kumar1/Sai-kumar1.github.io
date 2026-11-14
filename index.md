@@ -1,12 +1,9 @@
 ---
-layout: default
-title: Sai Kumar
+layout: home
+title: Home
+greeting: Hey, I'm Sai Kumar 👋
+headline: Software engineer, explorer of systems.
+exploring: distributed systems & systems architecture
 ---
 
-<h2 class="is-family-secondary fst-italic">Hey, I am Sai Kumar 👋</h2>
-
-<h4 class="is-family-secondary fst-italic text-danger"> explorer </h4>
-
-I am a software engineer passionate about exploring systems architecture.
-
-This is a new beginnig.
+I'm a software engineer who likes to understand how systems work under the hood. This is where I write down what I learn and share what I build.
