@@ -29,7 +29,11 @@
       var r = Math.hypot(w / 2, h);
       var at = " at " + x + "px " + y + "px)";
 
-      document.startViewTransition(apply).ready.then(function () {
+      // Marks this as a theme switch so the page-navigation styles stay out of it.
+      root.classList.add("theme-switching");
+      var t = document.startViewTransition(apply);
+      t.finished.finally(function () { root.classList.remove("theme-switching"); });
+      t.ready.then(function () {
         root.animate(
           { clipPath: ["circle(0px" + at, "circle(" + r + "px" + at] },
           { duration: 600, easing: "cubic-bezier(0.4, 0, 0.2, 1)", pseudoElement: "::view-transition-new(root)" }

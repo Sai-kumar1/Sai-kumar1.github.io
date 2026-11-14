@@ -312,10 +312,31 @@ a.tag:hover { color: var(--accent); background: var(--accent-soft); }
 }
 .not-found__links { display: flex; justify-content: center; gap: 0.75rem; margin-top: 1.5rem; }
 
+// ---------- Page transitions ----------
+// Smooth cross-page navigation (Chrome/Edge 126+, Safari 18.2+; others just
+// navigate normally). The header stays in place; the page fades and rises.
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+
+  html:not(.theme-switching) .site-header { view-transition-name: site-header; }
+
+  ::view-transition-old(root) {
+    animation: vt-fade-out 150ms ease-in both;
+  }
+  ::view-transition-new(root) {
+    animation: vt-fade-in 280ms cubic-bezier(0.2, 0, 0, 1) both;
+  }
+}
+
+@keyframes vt-fade-out { to { opacity: 0; } }
+@keyframes vt-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+}
+
 // Theme switch: the new theme is revealed by a circular clip (see main.js),
-// so turn off the default cross-fade.
-::view-transition-old(root),
-::view-transition-new(root) {
+// so turn off the page cross-fade while it runs.
+html.theme-switching::view-transition-old(root),
+html.theme-switching::view-transition-new(root) {
   animation: none;
   mix-blend-mode: normal;
 }
