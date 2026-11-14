@@ -1,0 +1,17 @@
+<footer class="site-footer">
+  <div class="wrap wrap--wide site-footer__inner">
+    <p class="site-footer__copy">© {{ site.time | date: "%Y" }} {{ site.author.name }}</p>
+    <ul class="site-footer__links">
+      {% if site.social.github != "" and site.social.github %}
+        <li><a href="https://github.com/{{ site.social.github }}" rel="me noopener">GitHub</a></li>
+      {% endif %}
+      {% if site.social.linkedin != "" and site.social.linkedin %}
+        <li><a href="https://www.linkedin.com/in/{{ site.social.linkedin }}" rel="me noopener">LinkedIn</a></li>
+      {% endif %}
+      {% if site.social.x != "" and site.social.x %}
+        <li><a href="https://x.com/{{ site.social.x }}" rel="me noopener">X</a></li>
+      {% endif %}
+      <li><a href="{{ '/blog/feed.xml' | relative_url }}">RSS</a></li>
+    </ul>
+  </div>
+</footer>

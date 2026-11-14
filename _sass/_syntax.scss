@@ -1,0 +1,43 @@
+// Rouge syntax highlighting — colors are tokens so light/dark switch automatically.
+:root {
+  --hl-comment: #6e7781;
+  --hl-keyword: #cf222e;
+  --hl-string: #0a3069;
+  --hl-number: #0550ae;
+  --hl-function: #8250df;
+  --hl-type: #953800;
+  --hl-variable: #24292f;
+  --hl-deleted-bg: #ffebe9;
+  --hl-inserted-bg: #dafbe1;
+}
+
+@mixin dark-syntax {
+  --hl-comment: #8b949e;
+  --hl-keyword: #ff7b72;
+  --hl-string: #a5d6ff;
+  --hl-number: #79c0ff;
+  --hl-function: #d2a8ff;
+  --hl-type: #ffa657;
+  --hl-variable: #e6edf3;
+  --hl-deleted-bg: rgba(248, 81, 73, 0.15);
+  --hl-inserted-bg: rgba(46, 160, 67, 0.15);
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { @include dark-syntax; } }
+:root[data-theme="dark"] { @include dark-syntax; }
+
+.highlight {
+  color: var(--hl-variable);
+
+  .c, .ch, .cd, .cm, .cpf, .c1, .cs { color: var(--hl-comment); font-style: italic; }
+  .k, .kc, .kd, .kn, .kp, .kr, .ow { color: var(--hl-keyword); }
+  .kt, .nc, .nn, .no { color: var(--hl-type); }
+  .s, .sa, .sb, .sc, .dl, .sd, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss { color: var(--hl-string); }
+  .m, .mb, .mf, .mh, .mi, .il, .mo, .mx { color: var(--hl-number); }
+  .nf, .fm, .nb, .bp { color: var(--hl-function); }
+  .na, .nt, .nv, .vc, .vg, .vi, .vm { color: var(--hl-number); }
+  .o { color: var(--hl-keyword); }
+  .p { color: var(--hl-variable); }
+  .gd { background: var(--hl-deleted-bg); }
+  .gi { background: var(--hl-inserted-bg); }
+  .err { color: var(--hl-keyword); }
+}

@@ -1,16 +1,60 @@
 title: Sai Kumar
-description: Portfolio
-baseurl: ""
+tagline: Software engineer exploring systems architecture
+description: Notes, write-ups and projects by Sai Kumar — a software engineer exploring systems architecture.
 url: "https://sai-kumar1.github.io"
+baseurl: ""
+lang: en
+
+author:
+  name: Sai Kumar
+  url: "https://sai-kumar1.github.io"
+
+# Leave a value empty to hide that link in the footer.
+social:
+  github: Sai-kumar1
+  linkedin: ""
+  x: ""
+
 markdown: kramdown
+highlighter: rouge
 kramdown:
   input: GFM
   math_engine: mathjax
+  syntax_highlighter: rouge
+
+sass:
+  style: compressed
 
 collections:
-  projects:
-    output: true
-    permalink: "/project/:name/"
   blogs:
     output: true
-    permalink: "/blog/:name/"
+    permalink: /blog/:name/
+  projects:
+    output: true
+    permalink: /project/:name/
+
+defaults:
+  - scope: { path: "", type: blogs }
+    values: { layout: post }
+  - scope: { path: "", type: projects }
+    values: { layout: project }
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-redirect-from
+
+feed:
+  collections:
+    blogs:
+      path: /blog/feed.xml
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - docs/
+  - scripts/
+  - Makefile
+  - vendor/
