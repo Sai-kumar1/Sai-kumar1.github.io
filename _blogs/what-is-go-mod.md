@@ -3,7 +3,6 @@ title: What is go.mod?
 date: 2022-01-31
 description: What `go mod init` creates, what go.mod contains, and why Go tracks only the dependencies a project actually uses.
 tags: [go, modules]
-original_url: https://goforgophers.blogspot.com/2022/01/what-is-gomod.html
 published: true
 ---
 

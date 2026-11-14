@@ -3,7 +3,6 @@ title: What is go package?
 date: 2022-03-03
 description: What the `package` line at the top of every Go file does, how packages split code across files, and how exporting works.
 tags: [go, packages]
-original_url: https://goforgophers.blogspot.com/2022/03/what-is-go-package.html
 published: true
 ---
 

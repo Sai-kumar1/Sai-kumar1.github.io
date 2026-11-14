@@ -4,7 +4,6 @@ date: 2022-03-03
 description: Why Go needed package versioning, where the "111" comes from, and how the GO111MODULE variable decides whether go.mod is used.
 tags: [go, modules]
 redirect_from: /blog/go111-mdoule/
-original_url: https://goforgophers.blogspot.com/2022/03/go111module-environment-variable.html
 published: true
 ---
 
