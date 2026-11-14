@@ -159,6 +159,30 @@
     update();
   }
 
+  /* ---------- Page title in the header once it scrolls away ---------- */
+  var header = document.querySelector("[data-site-header]");
+  var headerTitle = document.querySelector("[data-header-title]");
+  var headerMain = document.querySelector("[data-header-main]");
+  var pageTitle = document.querySelector(".post-title");
+  if (header && headerTitle && headerMain && pageTitle && "IntersectionObserver" in window) {
+    var setTitled = function (on) {
+      header.classList.toggle("is-titled", on);
+      // Only the visible half is focusable / announced.
+      headerTitle.inert = !on;
+      headerMain.inert = on;
+    };
+    new IntersectionObserver(function (entries) {
+      var e = entries[0];
+      // Titled once the h1 has moved up under the header, not when it's below the fold.
+      setTitled(!e.isIntersecting && e.boundingClientRect.top < header.offsetHeight);
+    }, { rootMargin: "-" + header.offsetHeight + "px 0px 0px 0px" }).observe(pageTitle);
+
+    headerTitle.addEventListener("click", function () {
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+    });
+  }
+
   /* ---------- Blog tag filter ---------- */
   var filter = document.querySelector("[data-tag-filter]");
   var postList = document.querySelector("[data-post-list]");

@@ -29,6 +29,53 @@
   justify-content: space-between;
   gap: 1rem;
 }
+
+// Brand + nav and the page title share this slot; one slides out as the
+// other slides in (toggled by .is-titled on .site-header, see main.js).
+.site-header__swap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+}
+.site-header__main,
+.site-header__title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  transition: transform 300ms cubic-bezier(0.2, 0, 0, 1), opacity 200ms ease;
+}
+.site-header__main {
+  justify-content: space-between;
+  gap: 1rem;
+}
+.site-header__title {
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  text-align: left;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(100%);
+  span { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  &:hover { color: var(--accent); }
+}
+.site-header.is-titled {
+  .site-header__main  { opacity: 0; transform: translateY(-100%); }
+  .site-header__title { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-header__main, .site-header__title { transition: opacity 150ms ease; transform: none !important; }
+}
+
 .site-header__brand {
   font-family: var(--font-brand);
   font-style: italic;
