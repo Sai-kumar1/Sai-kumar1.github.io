@@ -15,8 +15,26 @@
   document.querySelectorAll("[data-theme-toggle]").forEach(function (btn) {
     btn.addEventListener("click", function () {
       var next = currentTheme() === "dark" ? "light" : "dark";
-      root.setAttribute("data-theme", next);
-      try { localStorage.setItem("theme", next); } catch (e) {}
+      function apply() {
+        root.setAttribute("data-theme", next);
+        try { localStorage.setItem("theme", next); } catch (e) {}
+      }
+
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!document.startViewTransition || reduce) { apply(); return; }
+
+      // Light opens radially from the bottom, dark from the top.
+      var w = window.innerWidth, h = window.innerHeight;
+      var x = w / 2, y = next === "light" ? h : 0;
+      var r = Math.hypot(w / 2, h);
+      var at = " at " + x + "px " + y + "px)";
+
+      document.startViewTransition(apply).ready.then(function () {
+        root.animate(
+          { clipPath: ["circle(0px" + at, "circle(" + r + "px" + at] },
+          { duration: 600, easing: "cubic-bezier(0.4, 0, 0.2, 1)", pseudoElement: "::view-transition-new(root)" }
+        );
+      });
     });
   });
 

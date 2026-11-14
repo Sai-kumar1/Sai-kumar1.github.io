@@ -311,3 +311,11 @@ a.tag:hover { color: var(--accent); background: var(--accent-soft); }
   margin-bottom: 1rem;
 }
 .not-found__links { display: flex; justify-content: center; gap: 0.75rem; margin-top: 1.5rem; }
+
+// Theme switch: the new theme is revealed by a circular clip (see main.js),
+// so turn off the default cross-fade.
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
