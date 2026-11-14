@@ -54,7 +54,7 @@
       toc.hidden = false;
 
       // Collapse on small screens by default
-      if (window.matchMedia("(max-width: 1099px)").matches) {
+      if (window.matchMedia("(max-width: 1279px)").matches) {
         toc.querySelector("details").removeAttribute("open");
       }
 

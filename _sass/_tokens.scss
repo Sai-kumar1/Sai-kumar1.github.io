@@ -2,30 +2,41 @@
 // Light is the default; dark applies via OS preference or [data-theme="dark"].
 
 $breakpoint-md: 720px;
-$breakpoint-lg: 1100px;
+$breakpoint-lg: 1280px;   // TOC moves beside the text (clear of the paper sheet)
 
+// Dark: no pure black, no pure white. Pure #000 behind bright text causes halation
+// (letters appear to glow/smear) and extra eye strain; dark grays + softened text
+// keep contrast well above WCAG AAA (text ≈ 13.7:1, muted ≈ 6.7:1) without the glare.
 @mixin dark-tokens {
-  --bg: #000000;
-  --surface: #161617;
-  --surface-2: #1d1d1f;
-  --text: #f5f5f7;
-  --text-muted: #a1a1a6;
-  --border: #333336;
-  --accent: #ff6b78;
-  --accent-strong: #ff8a94;
-  --accent-soft: rgba(255, 107, 120, 0.14);
-  --code-bg: #111112;
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 10px 30px rgba(0, 0, 0, 0.35);
+  --canvas: #121214;          // laptop page background around the sheet
+  --bg: #1a1a1d;              // the sheet / page on phones
+  --surface: #222226;         // cards (lighter = raised, as in dark UIs)
+  --surface-2: #26262b;
+  --text: #e4e4e9;
+  --text-muted: #a0a0a7;
+  --border: #313136;
+  --sheet-edge: rgba(255, 255, 255, 0.06);
+  --accent: #ff7d88;
+  --accent-strong: #ff9aa3;
+  --accent-soft: rgba(255, 125, 136, 0.14);
+  --code-bg: #141416;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3);
+  --sheet-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 40px rgba(0, 0, 0, 0.25);
 }
 
 :root {
-  // Apple-style neutrals: near-black text, cool grays, white canvas
-  --bg: #ffffff;
+  // Apple-style neutrals: near-black text (not #000), cool grays.
+  // On laptops the page is a soft gray canvas and content sits on a white sheet,
+  // so large areas of bright white never dominate the screen.
+  --canvas: #f2f2f4;          // laptop page background around the sheet
+  --bg: #ffffff;              // the sheet / page on phones
   --surface: #ffffff;
   --surface-2: #f5f5f7;
   --text: #1d1d1f;
-  --text-muted: #6e6e73;
+  --text-muted: #636368;      // ≥ 5:1 on both white and the gray canvas
   --border: #d2d2d7;
+  --sheet-edge: rgba(0, 0, 0, 0.06);
+  --sheet-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 12px 40px rgba(0, 0, 0, 0.05);
   --accent: #b8323f;          // brand crimson
   --accent-strong: #941f2c;
   --accent-soft: rgba(184, 50, 63, 0.07);

@@ -61,6 +61,40 @@
   color: var(--text-muted);
   font-size: var(--fs-caption);
 }
+
+/* Paper sheet (laptop and up): gray canvas, content on a sheet.
+   Phones keep the plain full-width page. */
+$breakpoint-sheet: 1024px;
+@media (min-width: $breakpoint-sheet) {
+  body { background: var(--canvas); }
+  .site-header {
+    background: var(--canvas);
+    background: color-mix(in srgb, var(--canvas) 85%, transparent);
+  }
+  .site-main { padding-block: 3.5rem 5rem; }
+  .site-footer { border-top-color: transparent; }
+
+  // The sheet is a pseudo-element behind the reading column, so the post's
+  // table of contents stays outside it on the canvas. Wide pages (projects grid)
+  // keep their cards directly on the canvas.
+  .post,
+  .site-main > .wrap:not(.wrap--wide) { position: relative; isolation: isolate; }
+  .post::before,
+  .site-main > .wrap:not(.wrap--wide)::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -2.5rem;
+    bottom: -2.5rem;
+    left: 50%;
+    width: calc(var(--measure) + var(--gutter) * 2 + 7rem);
+    transform: translateX(-50%);
+    background: var(--bg);
+    border: 1px solid var(--sheet-edge);
+    border-radius: 18px;
+    box-shadow: var(--sheet-shadow);
+  }
+}
 .site-footer__inner {
   display: flex;
   flex-wrap: wrap;
@@ -111,8 +145,8 @@
     grid-column: 3;
     grid-row: 1;
     margin: 0;
-    max-width: 250px;
-    padding-inline: 1.5rem 0;
+    max-width: 330px;
+    padding-inline: 4.75rem 1rem;   // clears the paper sheet's right edge (3.5rem past the column)
   }
   .post-layout .toc details {
     position: sticky;
