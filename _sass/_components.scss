@@ -321,10 +321,10 @@ a.tag:hover { color: var(--accent); background: var(--accent-soft); }
   html:not(.theme-switching) .site-header { view-transition-name: site-header; }
 
   ::view-transition-old(root) {
-    animation: vt-fade-out 150ms ease-in both;
+    animation: vt-fade-out 250ms ease-in both;
   }
   ::view-transition-new(root) {
-    animation: vt-fade-in 280ms cubic-bezier(0.2, 0, 0, 1) both;
+    animation: vt-fade-in 450ms cubic-bezier(0.2, 0, 0, 1) both;
   }
 }
 
