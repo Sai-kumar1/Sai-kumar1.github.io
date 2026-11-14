@@ -23,41 +23,18 @@ _sass/               design tokens, base, layout, components, prose, syntax
 assets/css/main.scss stylesheet entry point
 assets/js/main.js    theme toggle, TOC, heading anchors, code copy, progress bar, tag filter
 index.md · blog.html · projects.html · 404.html
+_templates/          starting point for new posts and projects
+scripts/             new.sh (scaffold) · check.sh (front-matter check, also run by GitHub Actions)
+docs/WRITING.md      writing guide
 ```
 
-## Writing a post
+## Writing
 
-Create `_blogs/my-post.md` (the file name becomes the URL):
-
-```yaml
----
-title: My post title
-date: 2026-01-31
-description: One-sentence summary shown in lists and link previews.
-tags: [go, systems]
-published: true      # false = draft
-math: false          # true loads MathJax
----
+```sh
+make post title="My post title"     # new draft in _blogs/
+make project title="My Project"     # new draft in _projects/
+make check                          # catch front-matter mistakes
+make drafts                         # preview, drafts included
 ```
 
-- `## Headings` build the table of contents (shown when a post has 3 or more).
-- For a callout, put `{: .note}` on the line after a `> quote`.
-- Fenced code blocks with a language (```` ```go ````) get syntax highlighting and a copy button.
-
-## Adding a project
-
-Create `_projects/my-project.md`:
-
-```yaml
----
-title: My Project
-date: 2026-01-31
-summary: Short description for the card.
-stack: [Go, Redis]
-repo: https://github.com/…
-demo: https://…
-status: active        # active · in progress · archived
-featured: true        # show on the home page
-published: true
----
-```
+Writing straight on github.com, front-matter fields and a formatting cheat sheet: [docs/WRITING.md](docs/WRITING.md).

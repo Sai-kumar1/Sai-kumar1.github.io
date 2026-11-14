@@ -1,0 +1,19 @@
+# Runs scripts/check.sh on every push that touches posts or projects.
+# A mistake shows a red ❌ on the commit (and GitHub emails you) with the
+# file and the fix. It doesn't affect how GitHub Pages builds the site.
+name: Check posts
+
+on:
+  push:
+    paths: ["_blogs/**", "_projects/**", "scripts/check.sh", ".github/workflows/check-content.yml"]
+  pull_request:
+    paths: ["_blogs/**", "_projects/**"]
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check front matter
+        run: scripts/check.sh
