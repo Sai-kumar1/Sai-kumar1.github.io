@@ -1,16 +1,19 @@
 // Long-form article content (Markdown output)
 .prose {
-  font-family: var(--font-serif);
-  font-size: 1.125rem;
-  line-height: 1.75;
+  font-family: var(--font-text);
+  font-size: var(--fs-prose);
+  line-height: var(--lh-prose);
+  letter-spacing: var(--ls-body);
+  hanging-punctuation: first;     // quotes hang outside the text edge (Safari)
 
-  > * + * { margin-top: 1.25em; }
+  > * + * { margin-top: 1.1em; }
 
+  // Headings sit closer to the text they introduce than to the text above (proximity)
   h2, h3, h4 { position: relative; scroll-margin-top: calc(var(--header-h) + 1rem); }
-  h2 { font-size: var(--step-2); margin-top: 2.2em; }
-  h3 { font-size: var(--step-1); margin-top: 1.8em; }
-  h4 { font-size: 1.05rem; margin-top: 1.5em; }
-  h2 + *, h3 + *, h4 + * { margin-top: 0.6em; }
+  h2 { margin-top: 2em; }
+  h3 { margin-top: 1.7em; }
+  h4 { font-size: 1.0625rem; font-weight: 600; margin-top: 1.5em; }
+  h2 + *, h3 + *, h4 + * { margin-top: 0.55em; }
 
   .heading-anchor {
     position: absolute;
@@ -27,15 +30,16 @@
   li + li { margin-top: 0.35em; }
   li::marker { color: var(--accent); }
 
-  strong { font-weight: 650; }
+  strong { font-weight: 600; }
 
   blockquote {
     margin-inline: 0;
     padding: 0.2em 0 0.2em 1.1em;
     border-left: 3px solid var(--accent);
     color: var(--text);
-    font-style: italic;
-    font-size: 1.15em;
+    font-size: 1.1em;
+    line-height: 1.5;
+    letter-spacing: var(--ls-h3);
     p { margin: 0; }
   }
 
@@ -46,8 +50,8 @@
     border-left: 3px solid var(--accent);
     border-radius: 0 var(--radius) var(--radius) 0;
     background: var(--accent-soft);
-    font-style: normal;
-    font-size: 1rem;
+    font-size: 0.95em;
+    letter-spacing: var(--ls-body);
   }
 
   hr { border: 0; border-top: 1px solid var(--border); margin-block: 2.5em; }
@@ -59,8 +63,7 @@
     overflow-x: auto;
     width: 100%;
     border-collapse: collapse;
-    font-family: var(--font-sans);
-    font-size: 0.95rem;
+    font-size: 0.95em;
   }
   th, td { padding: 0.55em 0.8em; border-bottom: 1px solid var(--border); text-align: left; }
   th { font-weight: 600; }
@@ -71,7 +74,8 @@
     border-radius: 5px;
     background: var(--surface-2);
     font-family: var(--font-mono);
-    font-size: 0.85em;
+    font-size: 0.86em;
+    letter-spacing: 0;
   }
 
   // Code blocks
@@ -84,8 +88,9 @@
     border: 1px solid var(--border);
     border-radius: var(--radius);
     font-family: var(--font-mono);
-    font-size: 0.88rem;
-    line-height: 1.6;
+    font-size: 0.875rem;
+    line-height: 1.65;
+    letter-spacing: 0;
     tab-size: 4;
   }
   pre code { font-family: inherit; background: none; padding: 0; }
@@ -101,7 +106,7 @@
   border-radius: 6px;
   background: var(--surface);
   color: var(--text-muted);
-  font-family: var(--font-sans);
+  font-family: var(--font-text);
   font-size: 0.75rem;
   cursor: pointer;
   opacity: 0;

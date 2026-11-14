@@ -30,10 +30,11 @@
   gap: 1rem;
 }
 .site-header__brand {
-  font-family: var(--font-serif);
+  font-family: var(--font-brand);
   font-style: italic;
   font-weight: 700;
-  font-size: 1.35rem;
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
   color: var(--accent);
   text-decoration: none;
 }
@@ -48,7 +49,7 @@
   border-radius: 8px;
   color: var(--text-muted);
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: var(--fs-small);
   text-decoration: none;
   &:hover { color: var(--text); background: var(--surface-2); }
   &[aria-current="page"] { color: var(--text); }
@@ -58,7 +59,7 @@
 .site-footer {
   border-top: 1px solid var(--border);
   color: var(--text-muted);
-  font-size: var(--step--1);
+  font-size: var(--fs-caption);
 }
 .site-footer__inner {
   display: flex;
@@ -80,16 +81,17 @@
 
 /* Page header (lists, 404) */
 .page-header { margin-bottom: 2.5rem; }
-.page-title { font-size: var(--step-3); }
-.page-intro { margin-top: 0.6rem; color: var(--text-muted); font-size: 1.1rem; }
+.page-title { font-size: var(--fs-h1); }
+.page-intro { margin-top: 0.75rem; color: var(--text-muted); font-size: 1.3125rem; line-height: 1.38; letter-spacing: var(--ls-h3); }
 
 /* Post layout: reading column + TOC rail on wide screens */
 .post-header { margin-bottom: 2.5rem; }
-.post-title { font-size: var(--step-4); margin-top: 0.5rem; }
+.post-title { margin-top: 0.6rem; }
 .post-lede {
   margin-top: 1rem;
-  font-family: var(--font-serif);
-  font-size: 1.2rem;
+  font-size: var(--fs-subhead);
+  line-height: 1.38;
+  letter-spacing: var(--ls-h3);
   color: var(--text-muted);
 }
 
